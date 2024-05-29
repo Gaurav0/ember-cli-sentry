@@ -95,10 +95,10 @@ export default Service.extend({
 
     try {
       Raven.debug = debug;
+      Raven.setEnvironment(environment);
 
       // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
       const ravenConfig = assign({
-        environment,
         includePaths,
         whitelistUrls,
         release: this.get(serviceReleaseProperty) || config.APP.version
