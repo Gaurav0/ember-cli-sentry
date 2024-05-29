@@ -11,7 +11,7 @@ import Raven from 'raven';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
 // compatibility.
-const assign = _assign || merge;
+const assign = Object.assign || _assign || merge;
 
 /**
  * Default available logger service.
