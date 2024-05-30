@@ -11,7 +11,7 @@ import Raven from 'raven';
 
 // Ember merge is deprecated as of 2.5, but we need to check for backwards
 // compatibility.
-const assign = _assign || merge;
+const assign = Object.assign || _assign || merge;
 
 /**
  * Default available logger service.
@@ -95,10 +95,10 @@ export default Service.extend({
 
     try {
       Raven.debug = debug;
+      Raven.setEnvironment(environment);
 
       // Keeping existing config values for includePaths, whitelistUrls, for compatibility.
       const ravenConfig = assign({
-        environment,
         includePaths,
         whitelistUrls,
         release: this.get(serviceReleaseProperty) || config.APP.version
